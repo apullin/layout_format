@@ -1,0 +1,13 @@
+{   "genesis":"layout1.txt",
+    "opts":"-gpu",
+    "solution":[
+            {"source":"shape1_jb.txt", "id":"triangle", "origin":[1.1, 2.2], "rotation":-30.0},
+            {"source":"shape1_jb.txt", "id":"triangle", "origin":[3.0, 4.0], "rotation": 30.0},
+            {"source":"shape1_jb.txt", "id":"triangle", "origin":[5.0,6.0],  "rotation":-179.0},
+            {"source":"shape1_jb.txt", "id":"triangle", "origin":[7.0, 3.0], "rotation":179.0},
+            {"source":"shape1_jb.txt", "id":"triangle", "origin":[1.0, 4.3], "rotation":22.2},
+            {"source":"shape1_jb.txt", "id":"square", "origin":[9.9, 9.9],   "rotation":-1.0},
+            {"source":"shape1_jb.txt", "id":"square", "origin":[10.9, 10.9],   "rotation":-10.0},
+            {"source":"shape1_jb.txt", "id":"square", "origin":[11.9, 11.9],   "rotation":-20.0}
+        ]
+}

@@ -1,0 +1,11 @@
+{ "Layout":{
+        "stock": {
+            "id":"polyID",
+            "source":"22x28_cardstock.txt"
+            },
+        "elements":[
+            {"source":"shape1_jb.txt", "id":"triangle", "count":5},
+            {"source":"shape1_jb.txt", "id":"square", "count":3}
+            ]
+    }
+}
