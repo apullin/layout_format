@@ -4,27 +4,27 @@ Contributors: Andrew Pullin,
 
 ## Definition of Need
 
-Given the geometric description of one or more part files, we want to efficiently pack these parts into regions. This maps to out assumption of automated 2D manufacturing from sheet goods, targeting laser cutters, CNC routers, and drag knife cutters.\\
+Given the geometric description of one or more part files, we want to efficiently pack these parts into regions. This maps to out assumption of automated 2D manufacturing from sheet goods, targeting laser cutters, CNC routers, and drag knife cutters.  
 
-Many CAD file formats already exist. Rather than try to find one to suit out exact needs, a minimal implemention of clear encoding of the geometry description and task description will be made in the JSON format. This format is chosen due to easy loading, saving, and correspondance with the Python programming language.\\
+Many CAD file formats already exist. Rather than try to find one to suit out exact needs, a minimal implementation of clear encoding of the geometry description and task description will be made in the JSON format. This format is chosen due to easy loading, saving, and correspondence with the Python programming language.  
 
-It is worth reflecting the relative simplicity of the output, contrasted to the huge space in which is embedded: for a layout of $n$ total part instances, the solution can entirely be described by a single point in $\mathbb{R}^4n$. From our practical programming view, this is equivalent to a tuple of length $4n$, or rather $n$ 4-tuples of \textbf{(}part type, x, y, orientation\textbf{)}.
+It is worth reflecting the relative simplicity of the output, contrasted to the huge space in which is embedded: for a layout of _n_ total part instances, the solution can entirely be described by a single point in **R**^(4n). From our practical programming view, this is equivalent to a tuple of length $4n$, or rather $n$ 4-tuples of **{** part type, x, y, orientation **}**.
 
 ### Target
 
-The ultiamte goal for the implementation of this target to to produce a tool that is useful, open, robust, and reliable. An immediate comparison could be drawn to the slicing engines in consumer grade 3D printers that are now widely available. Powerful slicing and toolpath generation code runs quietly behind the translation of any STL to G-Code, and the implemention is now so good that novice users can instantly benefit from the silent invokation by some front end tool. \\
+The ultimate goal for the implementation of this target to to produce a tool that is useful, open, robust, and reliable. An immediate comparison could be drawn to the slicing engines in consumer grade 3D printers that are now widely available. Powerful slicing and toolpath generation code runs quietly behind the translation of any STL to G-Code, and the implementation is now so good that novice users can instantly benefit from the silent invokation by some front end tool.  
 
-Graphics Processing Unit (GPU) and associated drawing pipelines offers the potential to signifigantly accelerate some solution methods. Rasterization is a given and benefits immediatly from parallelism in the hardware. Through use of already extant methods, such as occlusion queries, and creative use of depth and alpha blending buffers, the scoring of scoring of solutions could be greatly accelerated.
+Graphics Processing Unit (GPU) and associated drawing pipelines offers the potential to signifigantly accelerate some solution methods. Rasterization is a given and benefits immediately from parallelism in the hardware. Through use of already extant methods, such as occlusion queries, and creative use of depth and alpha blending buffers, the scoring of scoring of solutions could be greatly accelerated.
 
 ## Proposed Formats
 
 ### Description of Parts
 
-Listing \ref{shape1_jb} shows a JSON format of a description of parts and their associated geometries. Each part is defined as a polygon with a boundary implemented as a vertex array, where closure between the last and first verticies will be assumed. Each shape will have exactly one bounary vertex array of at three or more points. \\
+The following listing shows a JSON format of a description of parts and their associated geometries. Each part is defined as a polygon with a boundary implemented as a vertex array, where closure between the last and first vertices will be assumed. Each shape will have exactly one bounary vertex array of at three or more points.  
 
-Shapes will be permitted to have cut-outs or "holes" in them. Any number of holes will be supported. Holes may not intersect with each other, although such a case should be easy to reconcile via a "sanitation" pass, where all holes are unioned together.\\
+Shapes will be permitted to have cut-outs or "holes" in them. Any number of holes will be supported. Holes may not intersect with each other, although such a case should be easy to reconcile via a "sanitation" pass, where all holes are union-ed together.  
 
-A parse-time check of the validity of each shape will be neccesarily. The \textit{shapely} library for Python should have the entirety of this implemented. It should suffice to implement each shape as a \textit{shapely.geometry.Polygon} object in python, and a validity test will be a given.
+A parse-time check of the validity of each shape will be neccesarily. The [shapely library for Python](http://toblerity.org/shapely/manual.html)should have the entirety of this implemented. It should suffice to implement each shape as a \textit{shapely.geometry.Polygon} object in python, and a validity test will be a given.
 
 Sample parts geometry description:
 
@@ -50,11 +50,11 @@ Sample parts geometry description:
 
 ### Description of the Task
 
-Listing \ref{layout1} shows a JSON format for specifying a layout task to be computed.\\
+The following listing shows a JSON format for specifying a layout task to be computed.\\
 
-All shapes and the overal boundary shape are defined in external files, and referenced here. This is intended to be an intermediate file format, and one that will ultimately be hidden from the user.\\
+All shapes and the overall boundary shape are defined in external files, and referenced here. This is intended to be an intermediate file format, and one that will ultimately be hidden from the user.\\
 
-PROMPT: Should this be handled more like an invokation of gcc? gcc is passed all object code for the link step.
+PROMPT: Should this be handled more like an invocation of gcc? gcc is passed all object code for the link step.
 
 Sample layout task:
 
@@ -71,9 +71,10 @@ Sample layout task:
     }
 
 ### Description of a Solution
-Listing \ref{solution1} shows a JSON format.  
 
-The numbers for this solution are entirely invented. A forthcoming test will be a function that can plot or reneder this solution as-is, and export the geometry to a manufacturable format, such as DXF. The \textit{ogr2ogr} tool from the GDAL project should be able to handle this with a minimum of glue code.  
+The following listing shows what the representation of the output of the solver could look like. Parts are instantiated and placed from their source design files.
+
+The numbers for this solution are entirely invented. A forthcoming test will be a function that can plot or render this solution as-is, and export the geometry to a manufacturable format, such as DXF. The \textit{ogr2ogr} tool from the GDAL project should be able to handle this with a minimum of glue code.  
 
 Sample solution output:
 
@@ -93,7 +94,7 @@ Sample solution output:
 
 ## Example Usage
 
-Tools will be writen mostly or entirely in Python, for ease and portability.
+Tools will be written mostly or entirely in Python, for ease and portability.
 
 ## Solution Methods
 
