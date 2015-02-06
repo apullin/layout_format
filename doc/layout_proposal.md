@@ -1,6 +1,6 @@
 # Title
 
-Contributors: Andrew Pullin,
+Contributors: Andrew Pullin, Austin Buchan, Duncan Haldane
 
 ## Definition of Need
 
