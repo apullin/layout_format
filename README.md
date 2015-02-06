@@ -1,8 +1,8 @@
 Layout Compiler Pass
 ==========
 
-The document describing the proposed layout format is here:
-LINK TO DOCUMENT
+The document describing the proposed layout format is here:  
+https://github.com/apullin/layout_format/blob/master/doc/layout_proposal.md
 
 Files:
 ---------
